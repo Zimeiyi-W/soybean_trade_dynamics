@@ -1,33 +1,190 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Global Soybean Trade Analytics</title>
     <style>
-        body { font-family: sans-serif; text-align: center; padding: 50px; }
-        h1 { color: #2E8B57; }
-        .btn {
-            display: inline-block;
-            margin: 20px;
-            padding: 15px 30px;
-            font-size: 18px;
-            color: white;
-            background-color: #4682B4;
-            text-decoration: none;
-            border-radius: 5px;
+        :root {
+            --primary-green: #2E8B57; /* SeaGreen for Soybeans */
+            --primary-blue: #4682B4;  /* SteelBlue for Trade */
+            --bg-color: #f4f4f9;
+            --text-color: #333;
         }
-        .btn:hover { background-color: #315f85; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 4px solid var(--primary-green);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        h1 {
+            margin: 0;
+            color: var(--primary-green);
+            font-size: 2.5rem;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.1rem;
+            margin-top: 10px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* Container for the two visualization cards */
+        .viz-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Two equal columns */
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        /* Card Styling */
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+        }
+
+        .card h2 {
+            margin-top: 0;
+            color: var(--primary-blue);
+        }
+
+        .tag {
+            display: inline-block;
+            background-color: #eee;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            color: #555;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .insight-box {
+            background-color: #e8f5e9; /* Light green background */
+            border-left: 4px solid var(--primary-green);
+            padding: 10px 15px;
+            margin: 15px 0;
+            font-size: 0.95rem;
+            color: #2d5a3c;
+        }
+
+        /* Buttons */
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 15px 0;
+            margin-top: 20px;
+            background-color: var(--primary-green);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #246b43;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 0.9rem;
+            color: #777;
+            border-top: 1px solid #ddd;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .viz-container {
+                grid-template-columns: 1fr; /* Stack columns on small screens */
+            }
+        }
     </style>
 </head>
 <body>
-    <h1>🌱 Global Soybean Trade Analytics</h1>
-    <p>Select a visualization to view:</p>
-    
-    <a class="btn" href="1_China_Soybean_Map.html">
-        Open Interactive Map 
-    </a>
-    
-    <a class="btn" href="2_Global_Sankey_Flow.html">
-        Open Global Trade Flow
-    </a>
+
+    <header>
+        <h1>🌍 Global Soybean Trade Analytics</h1>
+        <p class="subtitle">
+            A data analytics project visualizing the complex global trade flows of soybeans, 
+            highlighting the massive "pull" of China's market demand and the shifting architecture 
+            of global suppliers from 1986 to 2023.
+        </p>
+    </header>
+
+    <main>
+        <div class="viz-container">
+            <div class="card">
+                <div>
+                    <span class="tag">Visualization 1</span>
+                    <h2>The China Pull</h2>
+                    <p>An animated choropleth map tracking the volume of soybean exports to China over three decades.</p>
+                    
+                    <div class="insight-box">
+                        <strong>💡 Key Insight:</strong> Visualizes how South American countries (especially Brazil) have emerged as dominant suppliers to China alongside the United States.
+                    </div>
+                </div>
+                <a href="1_China_Soybean_Map.html" class="btn">Launch Interactive Map 🗺️</a>
+            </div>
+
+            <div class="card">
+                <div>
+                    <span class="tag">Visualization 2</span>
+                    <h2>Global Trade Architecture</h2>
+                    <p>A dynamic flow diagram (Sankey) showing the movement of soybeans from major exporters to their top trading partners.</p>
+                    
+                    <div class="insight-box">
+                        <strong>💡 Key Insight:</strong> Illustrates the "web" of global trade, allowing users to filter by year to see how relationships have diversified or consolidated.
+                    </div>
+                </div>
+                <a href="2_Global_Sankey_Flow.html" class="btn">Launch Flow Chart 🌊</a>
+            </div>
+        </div>
+
+        <div style="text-align: center; color: #555;">
+            <h3>Technologies Used</h3>
+            <p>Built with Python, Pandas, and Plotly</p>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <p>Data Source: <a href="http://www.fao.org/faostat/en/#data" target="_blank">FAOSTAT</a></p>
+    </footer>
+
 </body>
 </html>
